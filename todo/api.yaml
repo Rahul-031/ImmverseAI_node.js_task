@@ -1,10 +1,10 @@
 swagger: "2.0"
 info:
   title: todo API
-  description: This is my company API Documentation
+  description: This is my  API Documentation
   version: 1.0
   contact:
-    email: syosas@gmail.com
+    email: rahuldangre321@gmail.com
   liscence:
     name: Apache 2.0
     url: "http://www.apache.org/liscences/LIS"
