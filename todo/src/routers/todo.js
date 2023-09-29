@@ -6,12 +6,12 @@ const router = new express.Router()
 
 router.post('/todos', auth,createTodo)
 
-router.get('/todos', auth,getToDo )
+router.get('/todo', auth,getToDo )
 
-router.get('/todos/:id', auth,getTodoById )
+router.get('/todo/:id', auth,getTodoById )
 
 router.patch('/todos/:id', auth, updateTodo)
 
-router.delete('/todos/:id', auth,deleteTodo )
+router.delete('/todoDel/:id', auth,deleteTodo )
 
 module.exports = router

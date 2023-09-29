@@ -7,21 +7,56 @@ const sharp = require('sharp')
 const { sendWelcomeEmail, sendCancelationEmail } = require('../emails/account')
 const {UserCreate,userLogin,userLogout,updateUser,deleteUser,logoutAllUsers} = require("../controllers/user/userControllers")
 
+/**
+ * @openapi
+ * /api/user:
+ *   post:
+ *     summary: create new user
+ *     tags: [users]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/users'
+ *     responses:
+ *       200:
+ *         description: The user was successfully created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/users'
+ *       500:
+ *         description: Some server error
+ */
+
 router.post('/users', UserCreate)
 
-router.post('/users/login',userLogin )
+router.post('/userlogin',userLogin )
 
-router.post('/users/logout', auth,userLogout )
+router.post('/userlogout', auth,userLogout )
 
-router.post('/users/logoutAll', auth,logoutAllUsers)
+router.post('/userlogoutAll', auth,logoutAllUsers)
 
-router.get('/users/me', auth, async (req, res) => {
+/**
+* @openapi
+* /api/user:
+*   get:
+*       summary: This api is used to check if get method is working or not
+*       description: This api is used to check if get method is working or not
+*       responses:
+*           200:
+*             description: To test Get method
+*   
+*/
+
+router.get('/user', auth, async (req, res) => {
     res.send(req.user)
 })
 
-router.patch('/users/me', auth,updateUser)
+router.patch('/userPatch', auth,updateUser)
 
-router.delete('/users/me', auth,deleteUser )
+router.delete('/userDelete', auth,deleteUser )
 
 
 

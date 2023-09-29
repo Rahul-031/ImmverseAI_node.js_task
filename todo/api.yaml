@@ -1,0 +1,168 @@
+swagger: "2.0"
+info:
+  title: todo API
+  description: This is my company API Documentation
+  version: 1.0
+  contact:
+    email: syosas@gmail.com
+  liscence:
+    name: Apache 2.0
+    url: "http://www.apache.org/liscences/LIS"
+  servers:
+    -url: http://localhost:8000
+    description: THis is my local Server
+schemes: [http]
+
+
+#Return Users From get request
+paths:
+#Returns a User
+  /api/user:
+    get:
+      summary: Returns a list of users.
+      description: People Who are already registered
+      responses:
+        200:    # status code
+          description: Successul Response
+          schema: 
+            type: object
+            properties:
+              email:
+                type: string
+              name:
+                type: string
+
+#Defining Body Reference
+  /api/users:
+    post:
+      summary: Adds a new user
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+           $ref: "#/components/schemas/User"
+      responses:
+        '200':
+          description: OK
+
+  /api/userlogin:
+    post:
+      summary: login a user
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+           $ref: "#/components/schemas/login"
+      responses:
+        '200':
+          description: OK
+
+  /api/userPatch:
+    patch:
+      summary: update user
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+           $ref: "#/components/schemas/User"
+      responses:
+        '200':
+          description: OK
+
+
+  /api/todos:
+    post:
+      summary: Adds a new todo
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+           $ref: "#/components/schemas/Todo"
+      responses:
+        '200':
+          description: OK
+
+  /api/todos/:id:
+    patch:
+      summary: update a todo 
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+           $ref: "#/components/schemas/Todo"
+      responses:
+        '200':
+          description: OK
+
+
+  /api/todo:
+    get:
+      summary: Returns a list of todo.
+      description: People Who are already registered
+      responses:
+        200:    # status code
+          description: Successul Response
+          schema: 
+            type: object
+            properties:
+              description:
+                type: string
+              completed:
+                type: string
+
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - name
+        - email
+        - password
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        age:
+          type: integer
+    Todo:
+      type: object
+      required:
+       - description
+      properties:
+        description:
+         type: string
+        completed:
+         type: boolean
+    login:
+      type: object
+      required:
+       - email
+       - password
+      properties:
+        email:
+         type: string
+        password:
+         type: string

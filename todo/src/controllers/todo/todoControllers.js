@@ -14,6 +14,10 @@ const createTodo =  async (req, res) => {
     }
 }
 
+/**
+ * pagination for the get method 
+ * /todo?limit=1&skip=10
+ */
 const getToDo = async (req, res) => {
     const match = {}
     const sort ={}

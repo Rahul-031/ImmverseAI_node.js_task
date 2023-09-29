@@ -1,6 +1,9 @@
 const app = require('./app')
 const port = process.env.PORT 
 
+app.listen(port, () => {
+    console.log('Server is up on port ' + port)
+})
 // const multer = require('multer')
 // const upload = multer({
 //     dest: 'images',
@@ -37,9 +40,7 @@ const port = process.env.PORT
 // // })
 
 
-app.listen(port, () => {
-    console.log('Server is up on port ' + port)
-})
+
 
 // const Task = require('./models/task')
 // const User = require('./models/user')
